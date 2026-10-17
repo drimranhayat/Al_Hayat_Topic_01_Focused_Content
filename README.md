@@ -24,13 +24,7 @@ The development checkout instead keeps publishable files under `dist/`; copy its
 
 ### Configure search metadata after choosing your URL
 
-The portable ZIP intentionally has no canonical URL pointing to the private preview. After GitHub displays the real Pages address, run:
-
-```
-python3 configure_seo.py --base-url https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/ --directory .
-```
-
-Replace the example with your exact URL, then upload the generated sitemap, robots file and updated HTML. If you prefer, configure these files on your computer before uploading. They are not required for the site to function. No keyword strategy guarantees a specific search ranking.
+The release includes canonical URLs, social metadata, structured data, robots.txt and a sitemap for the public Al-Hayat site. If hosting this repository at another address, run `python3 configure_seo.py --base-url` followed by your actual HTTPS deployment URL and `--directory .`. Upload the regenerated HTML, sitemap.xml and robots.txt.
 
 ## Sources and authenticity
 
@@ -44,7 +38,8 @@ Sunnah.com is used for primary reference links and selected cross-checking, not 
 
 ## Files and maintenance
 
-- `index.html`: all forty entries in crawlable HTML.
+- `index.html`: course home with five learning sections.
+- `library.html`: forty compact, linked hadith cards.
 - `hadith/`: forty focused reading pages.
 - `sources.html`: methodology and complete reference register.
 - `assets/`: CSS, JavaScript, complete search data and favicon.
@@ -118,3 +113,21 @@ python3 scripts/check_content.py .
 ```
 
 Use `dist` instead of `.` for the hosted development checkout. Browser and real-device visual testing remain unverified. An independent subject-specialist review remains separate from this editorial and technical audit. Coverage concerns the selected texts and their necessary explanation, not every possible variant, chain, disputed ruling or incidental detail transformed into a quiz.
+
+## Focused reading layout
+
+Start at `index.html`: five section cards, reading progress and Continue Reading. `library.html` contains compact searchable title cards, eight per page with JavaScript. Each title opens its own `hadith/` page with Read → Explanation → Q&A → Practice, expandable section contents, previous/next links, language controls and memorization. The library supports `?section=1`, `?view=saved`, `?view=unread`, `?q=...` and `?page=2`; its URL preserves search and filter state for browser Back. Legacy `index.html#hadith-ID` links open the corresponding focused reader.
+
+All 40 IDs and lightweight navigation metadata remain present so opening one reading page does not drop other bookmarks or progress. `assets/entries/ID.js` supplies only that report's detailed data and exercises. The library loads a separate three-language search index without explanations or quizzes. `assets/data.js` is retained as the complete audit/test dataset but is not loaded by any reading, home or library page. Storage and quiz keys are unchanged by this layout revision.
+
+The homepage and library contain no full report bodies or exercise banks. Each reader's text and all 104 Q&A / 135 MCQs are preserved across the 40 separate pages. The mobile and night-mode styles remain. See `DESIGN_REVIEW.md` for the reference patterns and performance comparison. Run `node scripts/check_layout.mjs .` in the portable repository. Browser and real-device visual checks remain unverified.
+
+## Three-language card titles
+
+Section and hadith cards display English, Arabic and Urdu headings with distinct day/night colors. Arabic uses Amiri and Urdu uses the existing Nastaliq font stack, with RTL direction and generous line spacing. `card_titles.py` supplies editorial translations of headings; these are not quotations or changes to the transmitted text. Arabic and Urdu heading text is included in the library search index. Individual reading pages display the corresponding translated titles.
+
+
+## Public release
+Live site: https://al-hayat-revelation-sunnah.aquaearth3.chatgpt.site/
+All 45 Arabic card headings include vowel marks. Urdu uses black ink, including on light panels in dark mode. Source hadith and translations are preserved.
+Run `python3 build.py` to regenerate. If moving to a different host, run `python3 configure_seo.py --base-url` followed by the actual HTTPS site URL. Submit that host’s sitemap.xml through your own Google Search Console account. Rankings and indexing are determined by search engines.
