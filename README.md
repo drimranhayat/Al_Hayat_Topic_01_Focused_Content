@@ -95,3 +95,7 @@ Run `node scripts/check-learning.mjs .` for learning interaction checks.
 ## Content review
 
 See `CONTENT_REVIEW.md` for the scope and results of the thematic review. `focused_qa.py` contains the concise explanatory answers. `thematic_questions.py` contains the 84 retained MCQs, explanations, hints and source anchors. `learning_builder.py` assembles the material and checks source anchors during regeneration. Run `python3 scripts/check_learning_sources.py .` and `node scripts/check-learning.mjs .` for a portable ZIP, or use `dist` for the development checkout.
+
+## Mobile reading update
+
+Dedicated layouts for phones and tablets, including 320–430px screens: wrapping section buttons, stacked search and selectors, single-column study menus, larger text, 44px or larger action controls, wrapped pagination, safe-area spacing, and scrollable dialogs. The phone dock remains clear of the final content and notification messages. Arabic and Urdu keep normal word boundaries. Existing topics, source text, IDs and browser progress keys are preserved. Automated behavior/content checks pass; browser viewport and device visual testing was unavailable in this environment.
