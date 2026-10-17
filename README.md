@@ -79,7 +79,7 @@ English explanation, Urdu explanation, Arabic explanation/vocabulary, benefits, 
 
 Each hadith has a four-step route: Read, Explanation, Questions and Answers, and MCQ Practice. Use Back step and Next step within a report, Previous hadith and Next hadith between reports, and Main menu to return to the collection. Optional explanations, answers, hints and practice stay collapsed until opened.
 
-The learning bank contains **74 explanatory Q&A and 84 focused MCQs**. Counts vary with the content: one to four explanatory answers and one to five MCQs per hadith. Brief reports have brief question sets. Questions focus on central meanings, necessary context, useful distinctions and practical understanding. They do not impose a fixed quota on every report.
+The learning bank contains **104 explanatory Q&A and 135 focused MCQs**. Counts vary with the content: one to seven explanatory answers and one to nine MCQs per hadith. Brief reports have brief question sets. Questions focus on central meanings, necessary context, useful distinctions and practical understanding. They do not impose a fixed quota on every report.
 
 Q&A is written separately from the quizzes. The former explains the main points in connected prose; the latter checks selected learning points. Repeated narrator, grading, and sanad templates, automatically generated benefit/glossary questions, obvious omission questions, and overlapping recall items have been removed. All published benefits and glossary material remain available in the original reading panels. Reporter and reference information remain in Sources and authenticity.
 
@@ -94,8 +94,27 @@ Run `node scripts/check-learning.mjs .` for learning interaction checks.
 
 ## Content review
 
-See `CONTENT_REVIEW.md` for the scope and results of the thematic review. `focused_qa.py` contains the concise explanatory answers. `thematic_questions.py` contains the 84 retained MCQs, explanations, hints and source anchors. `learning_builder.py` assembles the material and checks source anchors during regeneration. Run `python3 scripts/check_learning_sources.py .` and `node scripts/check-learning.mjs .` for a portable ZIP, or use `dist` for the development checkout.
+See `CONTENT_REVIEW.md` for the scope and results of the thematic review. `focused_qa.py` contains the concise explanatory answers. `thematic_questions.py` contains the original focused MCQs, explanations, hints and source anchors. `learning_builder.py` assembles the material and checks source anchors during regeneration. Run `python3 scripts/check_learning_sources.py .` and `node scripts/check-learning.mjs .` for a portable ZIP, or use `dist` for the development checkout.
 
 ## Mobile reading update
 
 Dedicated layouts for phones and tablets, including 320–430px screens: wrapping section buttons, stacked search and selectors, single-column study menus, larger text, 44px or larger action controls, wrapped pagination, safe-area spacing, and scrollable dialogs. The phone dock remains clear of the final content and notification messages. Arabic and Urdu keep normal word boundaries. Existing topics, source text, IDs and browser progress keys are preserved. Automated behavior/content checks pass; browser viewport and device visual testing was unavailable in this environment.
+
+## Final coverage edition
+
+The final bank has **104 explanatory Q&A and 135 MCQs**, with 135 teaching points mapped across all forty selected reports. The core instructions, prohibitions, conditions, promises, warnings, narrative context, important terms and necessary commentary distinctions are covered through connected answers and selected practice. Source, reporter and publisher assessments remain in the dedicated source panels; missing full chains are not reconstructed. A brief report may need only one explanatory answer. A long report receives as many distinct items as its content warrants.
+
+Use **What this study set covers** inside each Q&A panel, or the footer's **Learning coverage and question counts** link. All optional material remains collapsed. The complete audit is supplied as `COVERAGE_AUDIT.md`, `coverage-audit.csv` and `coverage-audit.json`. It maps teaching points to numbered explanations and MCQs. These mappings are editorial judgments, not independent scholarly certification.
+
+`expanded_learning.py` contains the individually written additions. `focused_qa.py` and `thematic_questions.py` retain the original questions and append those additions, preserving the existing question IDs. `coverage_map.py` defines the teaching-point mappings; `coverage_report.py` regenerates the audit and website coverage page. The original pre-revision learning bank and hadith content are retained in `audit/` for comparison.
+
+Quiz attempts start fresh under `alhayat-topic001-v4-coverage-quiz` so the enlarged question bank cannot inherit mismatched scores. Bookmarks, reading progress, settings and notes keep their existing keys. The mobile stylesheet is retained throughout.
+
+Additional final checks:
+
+```sh
+python3 scripts/check_coverage.py .
+python3 scripts/check_content.py .
+```
+
+Use `dist` instead of `.` for the hosted development checkout. Browser and real-device visual testing remain unverified. An independent subject-specialist review remains separate from this editorial and technical audit. Coverage concerns the selected texts and their necessary explanation, not every possible variant, chain, disputed ruling or incidental detail transformed into a quiz.

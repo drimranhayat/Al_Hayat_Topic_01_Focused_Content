@@ -142,4 +142,5 @@ def reviewed_questions():
  if current:out.append(current)
  assert len(out)==40 and all(1<=len(x)<=5 for x in out)
  return out
-THEMATIC=reviewed_questions()
+from expanded_learning import append_mcq
+THEMATIC=append_mcq(reviewed_questions())

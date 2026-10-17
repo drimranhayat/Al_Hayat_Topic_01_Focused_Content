@@ -128,4 +128,5 @@ def load_qa():
  if group:out.append(group)
  assert len(out)==40 and all(1<=len(x)<=4 for x in out)
  return out
-FOCUSED_QA=load_qa()
+from expanded_learning import append_qa
+FOCUSED_QA=append_qa(load_qa())

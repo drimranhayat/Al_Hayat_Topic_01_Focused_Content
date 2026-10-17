@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const bank=window.LEARNING_DATA||{},key='alhayat-topic001-v3-focused-quiz';let attempts={};try{attempts=JSON.parse(localStorage.getItem(key)||'{}')||{};}catch{}if(typeof attempts!=='object'||Array.isArray(attempts))attempts={};
+const bank=window.LEARNING_DATA||{},key='alhayat-topic001-v4-coverage-quiz';let attempts={};try{attempts=JSON.parse(localStorage.getItem(key)||'{}')||{};}catch{}if(typeof attempts!=='object'||Array.isArray(attempts))attempts={};
 const valid=(v)=>Number.isInteger(v)&&v>=0&&v<4;
 function render(id){const set=bank[id];if(!set)return;let n=0,score=0;
 set.mcq.forEach((q,j)=>{const choice=attempts[id]?.[j],done=valid(choice);if(done){n++;if(choice===q.correct)score++;}

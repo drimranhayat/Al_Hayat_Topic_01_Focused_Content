@@ -1,49 +1,33 @@
-# Focused content revision
+# Final content and coverage review — Repository 1
 
-Topic 001: Revelation and Following the Sunnah. Revision: 17 October 2026.
+Revelation and Following the Sunnah. Reviewed 17 October 2026.
 
-The earlier review still imposed six MCQs per report and generated separate questions from every benefit and glossary entry. This created repeated ideas, superficial recall items, and long question lists. The current revision removes that quota and concentrates on questions that contribute a distinct learning point.
-
-| Component | Before | Current |
+| Component | Previous focused edition | Final coverage edition |
 |---|---:|---:|
-| Explanatory Q&A | 574 | 74 |
-| MCQs | 240 | 84 |
-| Q&A per report | Variable but template-heavy | 1–4 |
-| MCQs per report | Always 6 | 1–5 |
+| Hadith selections | 40 | 40 |
+| Explanatory Q&A | 74 | 104 |
+| MCQs | 84 | 135 |
+| Q&A per selection | 1–4 | 1–7 |
+| MCQs per selection | 1–5 | 1–9 |
 
-## Removed
+## Editorial result
 
-- Repeated questions on who supplies the grade, what sanad means, and whether a Companion attribution supplies a complete chain.
-- Automatically turning every benefit or glossary item into another question.
-- Multiple questions that tested the same simple fact in different wording.
-- Quizzes about what a brief report does not state, such as an exact duration or an unprovided numerical schedule.
-- Peripheral questions about the function of an oath, the grammar of a statement, or a generic teaching method where these did not develop the hadith's subject.
-- Artificial six-question quotas for short reports.
+All forty selected texts, explanations and publisher benefits were reviewed against the previous question bank. Additions cover missing distinctions and narrative clauses rather than imposing a quota. Proposed questions that restated existing explanations were removed before the final bank was assembled. The largest sets belong to the extended al-Baqarah account (7 Q&A / 7 MCQs) and the report on helping, learning and lineage (7 Q&A / 9 MCQs). The short report on retaining Quran memorization remains one explanatory answer and one applied question.
 
-The deleted questions are removed from the current source bank, not merely hidden by the interface.
+The final coverage map lists 135 teaching points. Each points to one or more Q&A and MCQ numbers. It includes religious authority and conformity, appropriate questioning, hearing and retaining revelation, transmission and writing, necessary historical qualifications, learning and practice, the closing supplications, intercession, mercy, obligations and capacity, beneficial and harmful influence, and all main clauses of the longer final reports. Source benefits and available vocabulary remain readable; incidental details do not all need isolated recall questions.
 
-## Retained learning focus
+## Accuracy and attribution
 
-- The connected chronology of revelation and migration.
-- Forms of revelation, retention, attentive reception, and the significance of surah boundaries.
-- The Quran's enduring evidential role without denying other miracles.
-- Obedience, authentic Prophetic authority, conformity in worship, real ability, and necessary questions.
-- Balanced worship, understanding, preservation, careful transmission, and the writing restriction in context.
-- Quranic learning and action, perseverance, revision, beneficial aspiration, and inward accountability.
-- Lawful ease, priorities, influence, charity, avoiding excess, assistance, safeguarding against harm, and mercy.
+Every item has an exact anchor in its published text, explanation or benefit. Supporting passages are visible on demand. Such anchors validate source wording; they do not by themselves prove every interpretive sentence. Answers and mappings were also reviewed editorially against their source context. Original Arabic, English, Urdu, explanations, report IDs, references and narrator metadata are unchanged.
 
-Q&A is independently phrased as concise explanation, rather than copying the MCQ stems. Practice questions check selected key points. Learning and practice can revisit the same important concept, but adjacent questions are no longer generated merely to restate it.
+Entry 23 retains Hammam's uncertainty and identifies the preferred reconciliation as the publisher's preference, while keeping its alternatives. Entry 24 concerns known or strongly suspected falsehood, not every ordinary uncertainty. Entry 29 distinguishes passing thoughts, chosen conduct and the source's account of abrogation. Entries 13 and 37 are read together so established charitable practice is not confused with unsupported religious additions. Entry 39 preserves the limit on concealing persistent harmful conduct and identifies the extension to school gatherings as al-Nawawi's commentary. Missing full chains are not invented.
 
-## Information retained outside quizzes
+The narrator correction for entry 37 remains explicit: Arabic, Urdu and Muslim 1017a identify Jarir ibn Abdullah; the publisher's English says Jabir. Entry 28 includes separate reports from Ibn Masud and Ibn Umar, with the supplementary reference retained.
 
-All forty published Arabic, English and Urdu selections and explanations are preserved. All 154 supplied English benefits and all supplied Arabic glossary entries remain in the reading panels. Reporter, primary reference, publisher assessment and chain-access information remain with the sources. The existing corrections concerning the two reporters in entry 28 and the Jarir/Jabir discrepancy in entry 37 remain in place.
+## Checks and limits
 
-## Verification
+All 239 exact question anchors, distinct stems, four distinct MCQ options, balanced answer positions, 540 answer-choice paths, scores, feedback, evidence reveal, reset and reload behavior are checked. Original question identities and all forty hadith records are compared with the previous version. Coverage-map references, preserved source text, local links, collapsed panels, icons, reading colors and mobile stylesheet inclusion are checked. Notes, bookmarks and reading progress keep their existing keys; quiz attempts use a new revision key.
 
-- Checked the source anchors for all 74 answers and 84 MCQs.
-- Verified unique question stems and IDs, one keyed answer and four distinct choices per MCQ, and variable question-set sizes.
-- Checked all 336 answer-choice paths for score, feedback, evidence reveal, reset, saved reload and old-score separation.
-- Rechecked source-text preservation, collapsed panels, generated HTML, local links and reader navigation.
-- The reduced bank uses a fresh quiz revision key. Notes, bookmarks and reading progress retain their original keys.
+The result is coverage of the selected published content and main explanatory distinctions. It does not claim exhaustive mastery of every chain, version, legal disagreement or commentary. No independent specialist sign-off is claimed. Browser and real-device visual testing remain unverified.
 
-This is an editorial and functional review of the selected publisher material, not a new authentication of the hadith or independent scholarly sign-off. Source explanations retain their attribution. Browser visual testing was unavailable; structural and simulated interaction checks were completed.
+See `COVERAGE_AUDIT.md`, `coverage-audit.csv` and `coverage-audit.json` for the full per-selection map.
