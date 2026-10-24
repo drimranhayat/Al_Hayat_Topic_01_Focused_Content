@@ -7,6 +7,7 @@ for script in ['build.py','redesign.py','finish_release.py','english_release.py'
 subprocess.run([sys.executable,'configure_seo.py','--directory','.', '--base-url','https://drimranhayat.github.io/Al_Hayat_Topic_01_Focused_Content/'],cwd=R,check=True)
 # SEO generator predates the English edition; normalize its language metadata too.
 subprocess.run([sys.executable,'english_release.py'],cwd=R,check=True)
+subprocess.run([sys.executable,'expand_explanations.py'],cwd=R,check=True)
 www=R/'www'
 if www.exists():shutil.rmtree(www)
 www.mkdir()

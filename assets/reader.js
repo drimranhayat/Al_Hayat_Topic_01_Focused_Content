@@ -3,9 +3,11 @@
  const tabs=[...document.querySelectorAll('[data-tab]')],panels=[...document.querySelectorAll('.lesson-panel')];
  const allowed=tabs.map(t=>t.dataset.tab),motion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
  function select(name,focus=false,write=true){
+  const target=name.startsWith('explanation-')?document.getElementById(name):null;if(target)name='understand';
   if(!allowed.includes(name))name='read';
   tabs.forEach(t=>{const active=t.dataset.tab===name;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1});
   panels.forEach(p=>p.hidden=p.id!=='panel-'+name);
+  if(target){target.tabIndex=-1;target.scrollIntoView({block:'start',behavior:motion()});target.focus({preventScroll:true})}
   if(write){const u=new URL(location.href);u.hash=name==='read'?'':name;history.pushState({tab:name},'',u)}
   if(focus){document.querySelector('.lesson-tabs').scrollIntoView({block:'start',behavior:motion()});document.getElementById('panel-'+name).focus({preventScroll:true})}
  }

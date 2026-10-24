@@ -6,7 +6,7 @@ function harness(hash=''){
  const tabs=['read','understand','practice','notes'].map(n=>new El('tab-'+n,{tab:n}));
  const panels=['read','understand','practice','notes'].map(n=>new El('panel-'+n));
  const choice=new El('translation-choice'),translations=['en'].map(n=>new El('',{translation:n}));
- const nodes=Object.fromEntries([...tabs,...panels,choice,new El('show-ar'),new El('show-en'),new El('show-ur'),new El('toast')].map(e=>[e.id,e]));const bar=new El('tabs');
+ const nodes=Object.fromEntries([...tabs,...panels,choice,new El('show-ar'),new El('show-en'),new El('show-ur'),new El('toast'),new El('explanation-1')].map(e=>[e.id,e]));const bar=new El('tabs');
  const document={body:new El('body'),getElementById:id=>nodes[id]||null,querySelectorAll:s=>s==='[data-tab]'?tabs:s==='.lesson-panel'?panels:s==='[data-translation]'?translations:[],querySelector:s=>s==='.lesson-tabs'?bar:null,addEventListener:(k,v)=>events[k]=v};
  const ctx={document,window:{addEventListener:(k,v)=>events[k]=v},location:{hash,href:'https://example.org/hadith/lesson.html'+hash},history:{pushState:(state,_,u)=>history.push({state,url:String(u)})},localStorage:{getItem:k=>store[k]||null,setItem:(k,v)=>store[k]=v},matchMedia:()=>({matches:true}),URL,JSON,setTimeout:()=>0,navigator:{},console};
  vm.runInNewContext(fs.readFileSync(path.join(root,'assets/reader.js'),'utf8'),ctx);
@@ -20,5 +20,6 @@ h.events.click({target:new h.El('',{tabOpen:'practice'})});assert.equal(h.panels
 h.choice.value='en';h.choice.handlers.change();assert.ok(h.translations.every(p=>!p.hidden));assert.equal(h.nodes['show-en'].checked,true);
 h.choice.value='none';h.choice.handlers.change();assert.ok(h.translations.every(p=>p.hidden));assert.equal(h.nodes['show-ar'].checked,true);
 assert.equal(harness('#notes').panels.find(p=>!p.hidden).id,'panel-notes');assert.equal(harness('#invalid').panels.find(p=>!p.hidden).id,'panel-read');
+const deep=harness('#explanation-1');assert.equal(deep.panels.find(p=>!p.hidden).id,'panel-understand');assert.ok(deep.nodes['explanation-1'].focused);
 h.ctx.location.hash='#read';h.events.popstate();assert.equal(h.panels.find(p=>!p.hidden).id,'panel-read');
 console.log('PASS: tab selection, keyboard navigation/wrap, direct hashes, browser-history handler, focus, and translation/settings synchronization. Simulated DOM; no visual-browser claim.');
