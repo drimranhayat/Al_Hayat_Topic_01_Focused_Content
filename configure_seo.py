@@ -9,7 +9,7 @@ root=Path(a.directory);urls=[]
 rows=json.loads((root/'content.json').read_text());by_slug={d['slug']:d for d in rows}
 classical=json.loads((root/'classical-content.json').read_text()) if (root/'classical-content.json').exists() else {}
 for f in sorted(root.rglob('*.html')):
- if 'audit' in f.relative_to(root).parts:continue
+ if set(f.relative_to(root).parts)&{'audit','www','android','node_modules'}:continue
  s=f.read_text()
  if f.name=='404.html':
   s=s.replace('</head>','<meta name="robots" content="noindex,follow"></head>');f.write_text(s);continue
@@ -17,8 +17,8 @@ for f in sorted(root.rglob('*.html')):
  s=re.sub(r'<link rel="canonical"[^>]*>|<meta property="og:[^"]*"[^>]*>|<meta name="(?:twitter:[^"]*|robots)"[^>]*>|<script type="application/ld\+json">.*?</script>','',s,flags=re.S)
  title=html.unescape(re.search(r'<title>(.*?)</title>',s,re.S)[1]);desc=html.unescape(re.search(r'<meta name="description" content="([^"]*)"',s)[1])
  d=by_slug.get(f.stem)
- if d:desc=f'{d["title"]}: {d["ref"]}, with Arabic, English and Urdu text, source explanation, focused questions and practice MCQs.'
- elif rel=='library.html':desc='Browse 40 source-linked hadith on revelation and following the Sunnah. Search Arabic, English and Urdu, explore five topics, and learn one hadith at a time.'
+ if d:desc=f'{d["title"]}: {d["ref"]}, with Arabic and English text, source explanation, focused questions and practice MCQs.'
+ elif rel=='library.html':desc='Browse 40 source-linked hadith on revelation and following the Sunnah. Search Arabic and English, explore five topics, and learn one hadith at a time.'
  elif rel=='sources.html':desc='Read the reference register, classical book references, translation attribution and editorial policy for all 40 hadith in the Al-Hayat collection.'
  elif rel=='coverage.html':desc='Explore the learning coverage of 40 hadith: 104 focused questions, 135 MCQs and 135 mapped teaching points.'
  s=re.sub(r'<meta name="description" content="[^"]*">','<meta name="description" content="'+html.escape(desc,quote=True)+'">',s)

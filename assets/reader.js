@@ -15,9 +15,15 @@
  window.addEventListener('popstate',()=>select(location.hash.slice(1),false,false));
  window.addEventListener('hashchange',()=>select(location.hash.slice(1),false,false));
  const chooser=document.getElementById('translation-choice'),prefix='alhayat-topic001-v1';
- function language(value,persist=true){if(!['ur','en','both','none'].includes(value))value='ur';chooser.value=value;document.body.classList.remove('no-en','no-ur');document.getElementById('show-en').checked=['en','both'].includes(value);document.getElementById('show-ur').checked=['ur','both'].includes(value);if(value==='none'){document.body.classList.remove('no-ar');document.getElementById('show-ar').checked=true}document.querySelectorAll('[data-translation]').forEach(el=>el.hidden=value!=='both'&&value!==el.dataset.translation);if(persist){try{localStorage.setItem(prefix+'-translation',value);const p=JSON.parse(localStorage.getItem(prefix+'-prefs')||'{}');p.en=['en','both'].includes(value);p.ur=['ur','both'].includes(value);p.ar=true;localStorage.setItem(prefix+'-prefs',JSON.stringify(p))}catch{}}}
- let initial='ur';try{initial=localStorage.getItem(prefix+'-translation')||'ur';const p=JSON.parse(localStorage.getItem(prefix+'-prefs')||'{}');if(!localStorage.getItem(prefix+'-translation')&&('ur'in p||'en'in p))initial=p.en!==false?(p.ur!==false?'both':'en'):(p.ur!==false?'ur':'none')}catch{}
- language(initial,false);chooser.addEventListener('change',()=>{document.body.classList.remove('no-ar','no-en','no-ur');language(chooser.value)});
- document.addEventListener('change',e=>{if(e.target.dataset.language){const en=document.getElementById('show-en').checked,ur=document.getElementById('show-ur').checked;language(en?(ur?'both':'en'):(ur?'ur':'none'));}});
+ function language(value,persist=true){
+  value=value==='none'?'none':'en';chooser.value=value;
+  document.body.classList.remove('no-ur','no-ar');document.body.classList.toggle('no-en',value==='none');
+  document.getElementById('show-en').checked=value==='en';document.getElementById('show-ar').checked=true;
+  document.querySelectorAll('[data-translation]').forEach(el=>el.hidden=value==='none');
+  if(persist)try{localStorage.setItem(prefix+'-translation',value)}catch{}
+ }
+ let initial='en';try{initial=localStorage.getItem(prefix+'-translation')==='none'?'none':'en'}catch{}
+ language(initial,false);chooser.addEventListener('change',()=>language(chooser.value));
+ document.addEventListener('change',e=>{if(e.target.dataset.language==='en')language(e.target.checked?'en':'none')});
  const share=document.getElementById('native-share');if(share)share.onclick=async()=>{const d=window.HADITH_DATA.find(x=>x.id===document.querySelector('article[data-id]').dataset.id);const payload={title:d.title,text:d.title+' — '+d.ref,url:location.href.split('#')[0]};try{if(navigator.share)await navigator.share(payload);else{await navigator.clipboard.writeText(payload.text+'\n'+payload.url);document.getElementById('toast').textContent='Lesson link copied';document.getElementById('toast').hidden=false;setTimeout(()=>document.getElementById('toast').hidden=true,2500)}}catch(e){if(e.name!=='AbortError'){document.getElementById('toast').textContent='Use Copy to copy the text and its references.';document.getElementById('toast').hidden=false}}};
 })();

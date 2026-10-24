@@ -1,12 +1,12 @@
 # Al-Hayat — Revelation and Following the Sunnah
 
-A static teaching website with 40 hadith lessons, five sections, Arabic/Urdu/English reading, bookmarks, personal notes, reading progress and editorial exercises.
+A static teaching website with 40 hadith lessons, five sections, English interface with Arabic hadith and English translation, bookmarks, personal notes, reading progress and editorial exercises.
 
 ## This revision
 
 - Four reader tabs: Read, Understand, Practice and Notes.
 - Desktop section sidebar and phone Previous / Contents / Next navigation.
-- English, Arabic and Urdu main headings.
+- English headings, navigation, learning exercises and commentary summaries.
 - Redesigned homepage and library cards with distinct dark section headings.
 - Arabic narrations copied from directly cited classical collections.
 - Literal extracts from classical commentaries, plus explicitly editorial summaries.
@@ -28,10 +28,8 @@ Upload the contents of this folder to the repository root and serve with GitHub 
 Install Python and `pip install -r requirements.txt`, then run:
 
 ```
-python build.py
-python redesign.py
-python finish_release.py
-python configure_seo.py --directory . --base-url https://YOUR-ACTUAL-SITE-URL/
+npm ci
+npm run android:sync
 ```
 
 The final command requires your real deployment URL. Keep the audit source snapshots when rebuilding. Do not rerun historical source-preservation tests as proof of the new text: they intentionally expect the old publisher explanation layout. The current release checks are:
@@ -43,4 +41,6 @@ node scripts/check-learning.mjs .
 node scripts/check-reader.mjs .
 ```
 
-Bookmarks, notes, reading status and quiz attempts use their existing storage keys. The original backup format does not include quiz attempts. This release is a responsive website, not an Android APK/AAB, and does not yet provide offline caching. Real-device and visual-browser QA are still required before a public release: the execution environment could not launch a local browser for this revision.
+The Android project bundles all lesson assets for offline reading and provides native text sharing, backup sharing and Back navigation. Arabic text uses the device's Arabic-capable fonts, with no remote font request. The app has no ads or analytics. Automatic Android cloud backup is disabled; users can export their own study backup.
+
+See [PLAY_STORE_RELEASE.md](PLAY_STORE_RELEASE.md) for build instructions, publisher details still needed, signing, privacy and device checks. This is Android source preparation: no signed APK/AAB or Play acceptance is claimed.
